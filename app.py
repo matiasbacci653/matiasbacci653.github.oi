@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import requests
 
-API_URL = 'http://127.0.0.1:5000/add-product'  # Cambia a la URL de tu backend
+API_URL = 'https://matiasbacci653.github.io/matiasbacci653.github.oi/'  # Cambia a la URL de tu backend
 
 def add_product():
     name = name_entry.get()

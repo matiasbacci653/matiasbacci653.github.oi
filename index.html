@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Tienda de Ropa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .product {
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        .product h2 {
+            margin: 0 0 10px;
+        }
+        .product p {
+            margin: 0;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchInventory();
+
+            function fetchInventory() {
+                fetch('https://matiasbacci653.github.io/matiasbacci653.github.oi/')  // Cambia a la URL de tu backend
+                    .then(response => response.json())
+                    .then(data => {
+                        const container = document.querySelector('.container');
+                        container.innerHTML = ''; // Limpiar contenido antes de agregar nuevos productos
+                        data.forEach(item => {
+                            const productDiv = document.createElement('div');
+                            productDiv.className = 'product';
+                            productDiv.innerHTML = `
+                                <h2>${item.name}</h2>
+                                <p>Stock: ${item.quantity}</p>
+                            `;
+                            container.appendChild(productDiv);
+                        });
+                    })
+                    .catch(error => console.error('Error al cargar productos:', error));
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Bienvenido a Nuestra Tienda de Ropa</h1>
+        <!-- Aquí se llenarán los productos mediante JavaScript -->
+    </div>
+</body>
+</html>
